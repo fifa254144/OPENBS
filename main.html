@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/stylesheet.css" rel="stylesheet">
+    <title>Testing</title>
+
+    <!-- update the version number as needed -->
+    <script src="/__/firebase/8.1.2/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script src="/__/firebase/8.1.2/firebase-auth.js"></script>
+    <script defer src="/__/firebase/8.0.2/firebase-database.js"></script>
+    <script src="/__/firebase/8.1.2/firebase-firestore.js"></script>
+    <script defer src="/__/firebase/8.0.2/firebase-functions.js"></script>
+    <script defer src="/__/firebase/8.0.2/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/8.0.2/firebase-storage.js"></script>
+    <script src="/__/firebase/8.1.2/firebase-analytics.js"></script>
+    <script defer src="/__/firebase/8.0.2/firebase-remote-config.js"></script>
+    <script defer src="/__/firebase/8.0.2/firebase-performance.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+  </head>
+  <body class="reload">
+    <!-- START HERE -->
+    <div class="menu-left">
+      <div class="menu-left-in">
+        <div class="menu-left-top">
+            <div class="frame">
+              <img src="images/test.jpg">
+            </div>
+            <p>Dr.Niwatchai Wangtrakuldee</p>
+            <a href="#">My profile</a>
+        </div>
+        <div class="line"></div>
+        <div class="menu-left-mid">
+          <h4>M E N U</h4>
+          <li><img src="images/inbox.png">Inbox</li>
+          <li><img src="images/inbox.png">Sent</li>
+          <li><img src="images/inbox.png">Drafts</li>
+          <li><img src="images/inbox.png">Settings</li>
+        </div>
+        <div class="menu-left-bottom">
+          <div class="bhump"><a href="index.html">Logout my account</a></div>
+        </div>
+      </div> 
+    </div>
+    <div class="main">
+      <div class="main-in">
+        <div class="main-up">
+          <h4>PATIENT'S PROFILE</h4>
+          <p id="test"></p>
+        </div>
+        <div class="main-left">
+            <div class="main-left-up">
+                <div class="main-left-up-frame">
+                  <img src="images/test.jpg">
+                </div>
+                <div class="main-left-up-detail">
+                  <li>ID : 123</li>
+                  <li>Name : Niwatchai Wangtrakuldee</li>
+                  <li>Age : 16</li>
+                  <li>Symptom : Tub Keng</li>
+                </div>
+            </div>
+            <div class="main-left-bottom">
+              <table cellpadding="0" cellspacing="0" width="100%" height="auto">
+                <tr>
+                  <th style="width: 40%;">Lyring position</th>
+                  <th style="width: 40%;">For</th>
+                  <th style="width: 20%;"></th>
+                </tr>
+                <tr>
+                  <td><div class="button color-blue"><a href="#">Lie on left side</a></div></td>
+                  <td><div class="button color-orange">60 minutes</div></td>
+                  <td>Option</td>
+                </tr>
+                <tr>
+                  <td><div class="button color-blue"><a href="#">Lie on right side</a></div></td>
+                  <td><div class="button color-red">150 minutes</div></td>
+                  <td>Option</td>
+                </tr>
+                <tr>
+                  <td><div class="button color-blue"><a href="#">Lie on right side</a></div></td>
+                  <td><div class="button color-green">1 minutes</div></td>
+                  <td>Option</td>
+                </tr> 
+              </table>
+            </div>
+        </div>
+        <div class="main-right">
+          <h4>Patient's position</h4>
+          <div class="main-right-frame">
+            <img src="images/test.jpg">
+          </div>
+        </div>
+        <div class="menu-left-bottom show" style="display: none;">
+          <div class="bhump"><a href="index.html">Logout my account</a></div>
+        </div>
+      </div>
+    </div>
+    <!-- END HERE -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const loadEl = document.querySelector('#load');
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.firestore().doc('/foo/bar').get().then(() => { });
+        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        // firebase.analytics(); // call to activate
+        // firebase.analytics().logEvent('tutorial_completed');
+        // firebase.performance(); // call to activate
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+        try {
+          let app = firebase.app();
+          let features = [
+            'auth', 
+            'database', 
+            'firestore',
+            'functions',
+            'messaging', 
+            'storage', 
+            'analytics', 
+            'remoteConfig',
+            'performance',
+          ].filter(feature => typeof app[feature] === 'function');
+          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+
+      firebase.initializeApp({
+        apiKey: "AIzaSyCs9YeqSe8bx_yIfRoOH7knjskuMRmmGp0",
+        authDomain: "openbs-beta.firebaseapp.com",
+        databaseURL: "https://openbs-beta-default-rtdb.firebaseio.com",
+        projectId: "openbs-beta"
+      });
+      // Read all data
+      var collect = "63070501037";
+      var docum = "YUPP";
+      var db = firebase.firestore();
+      var docRef = db.collection(collect).doc(docum);
+      class Skeleton {
+          constructor (id, keypoint, pose_status ) {
+              this.id = id;
+              this.keypoint = keypoint;
+              this.pose_status = pose_status;
+          }
+          toString() {
+              return this.id + ', ' + this.keypoint + ', ' + this.pose_status;
+          }
+      }
+      var skeletonConverter = {
+          toFirestore: function(skeleton) {
+              return {
+                  id: skeleton.id,
+                  keypoint: skeleton.keypoint,
+                  pose_status: skeleton.pose_status
+                  }
+          },
+          fromFirestore: function(snapshot, options){
+              const data = snapshot.data(options);
+              return new Skeleton(data.id, data.keypoint, data.pose_status)
+          }
+      }
+      db.collection(collect).doc(docum)
+      .withConverter(skeletonConverter)
+      .get().then(function(doc) {
+        if (doc.exists){
+          var skeleton = doc.data();
+          console.log(skeleton.pose_status);
+          document.getElementById("test").innerHTML = skeleton.pose_status;
+        } else {
+          console.log("No such document!")
+        }}).catch(function(error) {
+          console.log("Error getting document:", error)
+        });
+        db.collection(collect).doc(docum)
+        .onSnapshot(function(doc) {
+            skeleton = doc.data();
+            document.getElementById("test").innerHTML = skeleton.pose_status;
+            console.log("Current data: ", skeleton.pose_status);
+        });
+    </script>
+  </body>
+</html>

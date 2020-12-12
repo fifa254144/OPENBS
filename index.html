@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/stylesheet.css" rel="stylesheet">
+    <title>Welcome to OPENBS</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/8.1.2/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/8.1.2/firebase-auth.js"></script>
+    <script defer src="/__/firebase/8.1.2/firebase-database.js"></script>
+    <script defer src="/__/firebase/8.1.2/firebase-firestore.js"></script>
+    <script defer src="/__/firebase/8.1.2/firebase-functions.js"></script>
+    <script defer src="/__/firebase/8.1.2/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/8.1.2/firebase-storage.js"></script>
+    <script defer src="/__/firebase/8.1.2/firebase-analytics.js"></script>
+    <script defer src="/__/firebase/8.1.2/firebase-remote-config.js"></script>
+    <script defer src="/__/firebase/8.1.2/firebase-performance.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+  </head>
+  <body class="reload">
+    <!-- START HERE -->
+    <div class="login">
+      <img src="images/logo.png">
+      <form name="Form_login" method="post" onsubmit="return validateForm()">
+      <table cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+          <td>E-mail &nbsp;</td>
+          <td><input type="E-mail" name="username" required placeholder="E-mail"></td>
+        </tr>
+        <tr>
+          <td>Password &nbsp;</td>
+          <td><input type="Password" name="password" required placeholder="password"></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><button type="submit" class="button">Login</button></td>
+        </tr>
+      </table>
+      </form>
+    </div>
+    <!-- END HERE -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const loadEl = document.querySelector('#load');
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.firestore().doc('/foo/bar').get().then(() => { });
+        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        // firebase.analytics(); // call to activate
+        // firebase.analytics().logEvent('tutorial_completed');
+        // firebase.performance(); // call to activate
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+        try {
+          let app = firebase.app();
+          let features = [
+            'auth', 
+            'database', 
+            'firestore',
+            'functions',
+            'messaging', 
+            'storage', 
+            'analytics', 
+            'remoteConfig',
+            'performance',
+          ].filter(feature => typeof app[feature] === 'function');
+          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+      firebase.initializeApp({
+          apiKey: "AIzaSyCs9YeqSe8bx_yIfRoOH7knjskuMRmmGp0",
+          authDomain: "openbs-beta.firebaseapp.com",
+          databaseURL: "https://openbs-beta-default-rtdb.firebaseio.com",
+          projectId: "openbs-beta",
+          storageBucket: "openbs-beta.appspot.com",
+          messagingSenderId: "126511329718",
+          appId: "1:126511329718:web:3e37f9154d1f628d5ed117",
+          measurementId: "G-XG9FH8Z24M"
+       });
+      function validateForm() {
+        var username = document.forms["Form_login"]["username"].value;
+        var password = document.forms["Form_login"]["password"].value;
+        // alert(username+" "+password);
+        firebase.auth().signInWithEmailAndPassword(username, password)
+        .then((user) => {
+          // Signed in 
+          // ...
+          window.console.log("window see");
+          window.location.href = "main.html";
+        })
+        .catch((error) => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          alert(errorMessage);
+          window.location.href = "main.html";
+        });
+      }
+    </script>
+  </body>
+</html>
